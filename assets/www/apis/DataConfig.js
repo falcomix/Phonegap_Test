@@ -1,6 +1,6 @@
 /****************************************************/
-/* Offre un ensemble de méthode permettant la 		*/
-/* gestion de la configuration du téléphone			*/
+/* Offre un ensemble de mÃ©thode permettant la 		*/
+/* gestion de la configuration du tÃ©lÃ©phone			*/
 /****************************************************/
 
 function DataConfig() { 
@@ -13,15 +13,15 @@ function DataConfig() {
     
     this.lastClockInDate	= 0;
     
-    this.urlConfig			= 'http://5.48.124.192:4200/PhoneGateway_WebWrapper/';
+    this.urlConfig			= 'http://217.169.240.210:5000/WebWrapper/';
     
     this.employeeName		= '';
     this.employeeFirstname	= '';
     
     /****************************************************/
-    /*						METHODES					*/
+    /*	METHODES					*/
     /****************************************************/
-    // Est-ce que la configuration est prète ?
+    // Est-ce que la configuration est prÃ¨te ?
     this.isReady = function() {
     	var ready = true;
     	if(		this.url 		== '' 
@@ -40,7 +40,7 @@ function DataConfig() {
     	return date.getTime();
     }
     
-    // Sommes-nous autorisé à pointer ? (attente de 1 minute)
+    // Sommes-nous autorisÃ© Ã  pointer ? (attente de 1 minute)
     this.getAuthorization = function(){
     	console.log("//////////////////////lastClockInDate : " + this.getLastClockInDate());
 		var date	= new Date();
