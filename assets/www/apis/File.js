@@ -67,12 +67,13 @@ function createGotFileEntry(fileEntry) {
     console.log("******createGotFileEntry[FIN]");
 }
 function gotFS(fileSystem) {
+	alert("gotFS");
 	console.log("**gotFS[DEBUT]");
     myFS 			= fileSystem;
     console.log(fileSystem.name);
     console.log(fileSystem.root.name);
     
-    alert("gotFS");
+    
     alert(fileSystem.name);
     alert(fileSystem.root.name);
     
@@ -82,12 +83,16 @@ function gotFS(fileSystem) {
     console.log("******gotFS[FIN]");
 }
 function createFile() { // button onclick function
+	alert("createFile debut");
 	console.log("**createFile[DEBUT]");
 	if (myFS) {
+		alert("createFile if");
         gotFS(myFS);
     } else {
+    	alert("createFile else");
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, failFS);
     }
+    alert("createFile fin");
 	console.log("******createFile[FIN]");
 }
 
