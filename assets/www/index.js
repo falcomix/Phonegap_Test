@@ -39,6 +39,7 @@ function clearCache(){
 
 // Initialise la structure de connexion pour une future détection
 function initVarConnection(){
+	alert("initVarConnection debut");
 	states[Connection.UNKNOWN]  = 'Unknown connection';
 	states[Connection.ETHERNET] = 'Ethernet connection';
 	states[Connection.WIFI]     = 'WiFi connection';
@@ -47,6 +48,8 @@ function initVarConnection(){
 	states[Connection.CELL_4G]  = 'Cell 4G connection';
 	states[Connection.CELL]     = 'Cell generic connection';
 	states[Connection.NONE]     = 'No network connection';
+	
+	alert("initVarConnection fin");
 }
 
 /****************************************************************************************************/
@@ -732,7 +735,12 @@ function successGetPhoneClockInSettingFromPhoneNumber(success){
 /*************************************************************************************************/
 // Génère une arborescence de configuration
 function generateArbo(er){
+	alert("generateArbo debut");
+	
 	erase = er;
+	
+	
+	alert("generateArbo 2");
 	createFile();
 	/*intArbo = setInterval(function(){
 		if(myFileEntry){
