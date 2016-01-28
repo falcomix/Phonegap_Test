@@ -1,6 +1,6 @@
 /****************************************************/
-/* Offre un ensemble de méthode permettant la 		*/
-/* création/suppression, lecture/écriture			*/
+/* Offre un ensemble de mÃ©thode permettant la 		*/
+/* crÃ©ation/suppression, lecture/Ã©criture			*/
 /* dans le fichier de configuration .xml			*/
 /****************************************************/
 
@@ -10,8 +10,8 @@ var myWriter		= 0;
 var myCfg			= 0;
 var contentFile 	= new DataConfig();
 
-var cptWriteFail	= 0; 	// Permet de determiner une limite à la construction d'arborescence (car problème sur galaxy S)
-							// Il faut au miminum lancer 2 fois la génération pour quelle soit complète.
+var cptWriteFail	= 0; 	// Permet de determiner une limite Ã  la construction d'arborescence (car problÃ¨me sur galaxy S)
+							// Il faut au miminum lancer 2 fois la gÃ©nÃ©ration pour quelle soit complÃ¨te.
 
 var erase			= false;
 
@@ -31,6 +31,7 @@ function writeFail(error) {
 }
 
 function gotFsFail(error){
+	alert("gotFsFail");
 	if(error.code == '1'){
 		myFS.root.getDirectory("EVERYTIME-Technologies", {create: true});
 		myFS.root.getFile("EVERYTIME-Technologies/config.xml", {create: true, exclusive: false}, createGotFileEntryFirst, gotFsFail);
@@ -70,6 +71,10 @@ function gotFS(fileSystem) {
     myFS 			= fileSystem;
     console.log(fileSystem.name);
     console.log(fileSystem.root.name);
+    
+    alert("gotFS");
+    alert(fileSystem.name);
+    alert(fileSystem.root.name);
     
     //directory 	= fileSystem.root.getDirectory("EVERYTIME-Technologies", {create: true});
     fileSystem.root.getDirectory("EVERYTIME-Technologies", {create: false});
