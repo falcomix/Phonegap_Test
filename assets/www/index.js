@@ -41,12 +41,19 @@ function clearCache(){
 function initVarConnection(){
 	alert("initVarConnection debut");
 	states[Connection.UNKNOWN]  = 'Unknown connection';
+	alert("initVarConnection 1");
 	states[Connection.ETHERNET] = 'Ethernet connection';
+	alert("initVarConnection 2");
 	states[Connection.WIFI]     = 'WiFi connection';
+	alert("initVarConnection 3");
 	states[Connection.CELL_2G]  = 'Cell 2G connection';
+	alert("initVarConnection 4");
 	states[Connection.CELL_3G]  = 'Cell 3G connection';
+	alert("initVarConnection 5");
 	states[Connection.CELL_4G]  = 'Cell 4G connection';
+	alert("initVarConnection 6");
 	states[Connection.CELL]     = 'Cell generic connection';
+	alert("initVarConnection 7");
 	states[Connection.NONE]     = 'No network connection';
 	
 	alert("initVarConnection fin");
