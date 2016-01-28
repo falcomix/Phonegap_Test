@@ -13,7 +13,7 @@ function DataConfig() {
     
     this.lastClockInDate	= 0;
     
-    this.urlConfig			= 'http://217.169.240.210:5000/WebWrapper/';
+    this.urlConfig			= 'http://217.169.255.115:5000/WebWrapper/';
     
     this.employeeName		= '';
     this.employeeFirstname	= '';
