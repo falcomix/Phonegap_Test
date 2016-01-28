@@ -13,13 +13,13 @@ function DataConfig() {
     
     this.lastClockInDate	= 0;
     
-    this.urlConfig			= 'http://217.169.255.115:5000/WebWrapper/';
+    this.urlConfig			= 'http://clockin.no-Ip.org/PhoneGateway_WebWrapper/';
     
     this.employeeName		= '';
     this.employeeFirstname	= '';
     
     /****************************************************/
-    /*	METHODES					*/
+    /*	METHODES										*/
     /****************************************************/
     // Est-ce que la configuration est prète ?
     this.isReady = function() {
