@@ -37,7 +37,7 @@ function clearCache(){
 	}
 }
 
-// Initialise la structure de connexion pour une future détection
+// Initialise la structure de connexion pour une future dÃ©tection
 function initVarConnection(){
 	states[Connection.UNKNOWN]  = 'Unknown connection';
 	states[Connection.ETHERNET] = 'Ethernet connection';
@@ -54,6 +54,7 @@ function initVarConnection(){
 /****************************************************************************************************/
 
 $(document).ready(function() { 
+	alert("Test");
 	document.addEventListener("online", 		onOnline, 		false);
 	//document.addEventListener("offline", 		onOffline, 		false);
 	document.addEventListener("deviceready", 	onDeviceReady, 	false);
@@ -69,7 +70,7 @@ $(document).ready(function() {
     $('#view_index').css('display', 'none');
 });
 
-// Lancé lorsque le support est prêt
+// LancÃ© lorsque le support est prÃªt
 function onDeviceReady() {
     $.support.cors = true;
 
@@ -86,7 +87,7 @@ function onDeviceReady() {
 	}, 4000);
 }
 
-// Evènement lorsque l'orientation change
+// EvÃ¨nement lorsque l'orientation change
 function orientationChange(e) {
 	orientation = "portrait";
  	if(window.orientation == -90 || window.orientation == 90) {
@@ -97,7 +98,7 @@ function orientationChange(e) {
  	console.log(orientation);
 }
 
-// Appelé lors de la récupération de réseau internet
+// AppelÃ© lors de la rÃ©cupÃ©ration de rÃ©seau internet
 function onOnline() {
 	console.log("----------------------------------------- ONLINE");
 	var localStorage 			= new LocalStorage();
@@ -111,14 +112,14 @@ function onOffline() {
 	alert("Connection Lost !");
 }
 
-// Vérifie l'état de connexion
+// VÃ©rifie l'Ã©tat de connexion
 function checkConnection() {
     var networkState 			= navigator.network.connection.type;
     return states[networkState];
 }
 
-// Retourne si il est possible d'effectuer une requête 
-// selon l'état de la connexion
+// Retourne si il est possible d'effectuer une requÃªte 
+// selon l'Ã©tat de la connexion
 function connectionIsAvailable(){
 	return (	checkConnection() != states[Connection.NONE] 
 			&&	checkConnection() != states[Connection.UNKNOWN]);
@@ -215,7 +216,7 @@ function getSizeScreen(){
 	writeDebug("container_height : " + container_height, debugColor.WORKS, false);
 }
 
-// Redimenssion et repositionne l'ensemble des éléments
+// Redimenssion et repositionne l'ensemble des Ã©lÃ©ments
 function ResizeRefreshPositionsElements(){
 	// Redimenssionnement
 	$('#imgClockIn').css('width', 192);	//128 192 256
@@ -593,7 +594,7 @@ function GetPhoneClockInSettingFromPhoneNumber(){
 	}
 }
 
-// Change l'état du bouton de pointage
+// Change l'Ã©tat du bouton de pointage
 function switchClockInButton(){
 	if($("#imgClockIn").attr("src") == "images/ajaxLoader.gif"){
 		$("#imgClockIn").attr("src","images/arrowDown256gray.png");
@@ -647,7 +648,7 @@ function successGetInstitutionNameByExternalId(success) {
 	}
 }
 
-// Appelé lorsque le pointage a réussi (la communcation avec le WebWrapper)
+// AppelÃ© lorsque le pointage a rÃ©ussi (la communcation avec le WebWrapper)
 function successTrySendNewClockInMovement(success) {
 	var localStorage 			= new LocalStorage();
 	//getConfig();
@@ -696,7 +697,7 @@ function successTrySendNewClockInMovement(success) {
 			localStorage.executeCache();
 			break;
 			
-		case "3" : // Verifier les données
+		case "3" : // Verifier les donnÃ©es
 			msg = "Veuillez verifier l'int&eacute;grit&eacute; de vos donn&eacute;es";
 			showBlockquote($("#blkError"), msg);
 			break;
@@ -727,7 +728,7 @@ function successGetPhoneClockInSettingFromPhoneNumber(success){
 /*************************************************************************************************/
 /*                          			CONFIGURATION			                                 */
 /*************************************************************************************************/
-// Génère une arborescence de configuration
+// GÃ©nÃ¨re une arborescence de configuration
 function generateArbo(er){
 	erase = er;
 	createFile();
