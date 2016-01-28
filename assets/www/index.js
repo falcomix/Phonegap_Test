@@ -72,12 +72,13 @@ $(document).ready(function() {
 
 // Lancé lorsque le support est prêt
 function onDeviceReady() {
+	alert("onDeviceReady");
     $.support.cors = true;
 
     initVarConnection();
     generateArbo(false);
 	console.log("**Device [OK]");
-	
+	alert("Device [OK]");
 	setTimeout(function() {
 	    navigator.splashscreen.hide();
 	    ResizeRefreshPositionsElements();
@@ -100,12 +101,13 @@ function orientationChange(e) {
 
 // Appelé lors de la récupération de réseau internet
 function onOnline() {
+	alert("onOnline");
 	console.log("----------------------------------------- ONLINE");
 	var localStorage 			= new LocalStorage();
 	if(localStorage.getFirstIndexAvailable() > 0){
 		sendCache();	
 	}
-	//alert("Connection !");
+	alert("Connection !");
 }
 
 function onOffline() {
