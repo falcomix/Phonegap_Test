@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	
+		<meta name="format-detection" 	content="telephone=no" />
+        <meta name="viewport" 			content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, height=device-height, width=device-width" /><!--, width=device-width, , target-densitydpi=device-dpi -->
+	
+	    <title>First Phone Gap Page</title>
+	    
+	    <script type="text/javascript" 	charset="utf-8" src="jquery/Jquery1101.js"></script>
+	    <script type="text/javascript" 	charset="utf-8" src="jquery/jqueryUI1103.custom.js"></script>
+	    <script type="text/javascript" 	charset="utf-8" src="cordova.js"></script>
+	    
+	    <script type="text/javascript" 	charset="utf-8" src="apis/DataConfig.js"></script>
+	    <script type="text/javascript" 	charset="utf-8" src="apis/File.js"></script>
+	    <script type="text/javascript" 	charset="utf-8" src="apis/LocalStorage.js"></script>
+	    <script type="text/javascript" 	charset="utf-8" src="index.js"></script>
+	    
+	    <link 	type="text/css" 		charset="utf-8"	href="index.css" rel="stylesheet" />
+	</head>
+	<body id="mainBody" onload="console.log('onload body');">
+		<div id="view_splashscreen" style="border:0px black solid;">
+			<table cellpadding="0" cellspacing="0" width="100%" style="height:100%;" >
+				<tr>
+					<td align="center">
+						<img 	id="imgSplash"	src="images/splash.png" alt="error loading img" title="" 	/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	    <div id="view_index" 		style="border:0px black solid;">
+	    	<div id="divDebug" 		style="Position:absolute; margin-top:1px; margin-left:1px; z-index:1; display:none;"></div>
+	    	
+	    	<img 	id="imgConfig" 			src="images/gearBlue.png" 				alt="error loading img" title="Config !" 								onclick="showView_config()"/>
+	   		<center><img 	id="imgClockIn" 		src="images/arrowDown256gray.png" 	alt="error loading img" title="Pointez !" 						onclick="TrySendNewClockInMovement(null)"/></center>
+	    	<!--<input type="button" value="size" onclick="getSizeScreen()"></input>-->
+	    	<img 	id="imgNotification"	src="images/notifs.png" 				alt="error loading img" title="1 ou plusieurs pointages sont en cache" 	onclick="sendCache()"/>
+				
+			<div id="blkValid" 	class="valid" style="display: none;" onclick="hideBlockquote('blkValid');"><p>Pointage enregistre Pointage mis en cache Pointage mis en cache</p></div>
+			<div id="blkError" 	class="error" style="display: none;" onclick="hideBlockquote('blkError');"><p>Pointage mis en cache Pointage mis en cache Pointage mis en cache</p></div>
+			
+	    </div>
+	    <div id="view_getConfig" class="" style="display: none;">
+				<center><table id="table_getConfig" cellpadding="10" cellspacing="0px" width="90%" border="0">
+					<tr>
+		    			<td>
+		    				<h1 class="title">Configuration</h1>
+		    			</td>
+		    		</tr>
+					<tr>
+						<td colspan="2">
+							<span class="form_config">Veuillez entrer votre num&eacute;ro de t&eacute;l&eacute;phone afin de r&eacute;cup&eacute;rer votre configuration sur nos sevices.</span><br/><br/>
+							<input id="txtPhoneNumber" type="text" style="width: 100%;"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="form_config_save" onclick="$('#txtPhoneNumber').val(''); ">> Annuler</span>
+						</td>
+						<td align="right">
+							<div style="position: relative;">
+								<span class="form_config_save" onclick="GetPhoneClockInSettingFromPhoneNumber()">> Envoyer</span>
+								<img 	id="imgGetConfigLoader" style="position:absolute; width:32px; height:32px; display:none; top:-6px; right:100px;" src="images/ajaxLoader.gif" alt="error loading img"/>
+							</div>
+						</td>
+					</tr>
+				</table></center>
+				<div id="blkErrorGetConfig" 	class="error" style="display: none;" onclick="hideBlockquote('blkErrorGetConfig');"><p>Une erreur est survenu lors de la r&eacute;cup&eacute;ration de vos donn&eacute;es, veuillez r&eacute;-essayer ult&eacute;rieurement</p></div>
+			</div>
+	    <div id="view_config" 		style="display: none; border:0px blue solid;">
+	    	<img 	id="imgBack" 			src="images/upArrowBlue.png" 		alt="error loading img" title="Config !" 							onclick="showView_index()"/>
+	    	<center><table 	id="table_config" 		cellpadding="10" cellspacing="0px" width="90%" border="0">
+	    		<tr>
+	    			<td>
+	    				<h1 class="title">Configuration</h1>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td align="left"> 
+	    				<span class="form_config">Url du service</span><br/>
+	    				<input id="url" 		type="text" 	style="width:100%;" value="" alt=""/>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td> 
+		    			<span class="form_config">Id de l'&eacute;tablissement</span><br/>	
+		    			<input id="id" 		type="text" 		style="width:100%;" value="" alt=""/>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<span class="form_config">Num&eacute;ro de badge</span><br/> 
+	    				<input id="badge" 		type="text" 	style="width:100%;" value="" alt=""/>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+		    			<table width="100%" >
+			    			<tr>
+			    				<td align="left">
+			    					<span class="form_config_save" onclick="cancelConfig()">> Annuler</span> 
+			    				</td>
+			    				<td align="right">
+				    				<div style="position: relative;">
+				    					<span class="form_config_save" onclick="saveConfig()">> Enregistrer</span> 
+				    					<img 	id="imgConfigSaveLoader" style="position:absolute; width:32px; height:32px; display:none; top:-6px; right:100px;" src="images/ajaxLoader.gif" alt="error loading img"/>
+				    				</div>
+			    				</td>
+			    			</tr>
+		    			</table>			
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<h1 class="title">Cache</h1>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>
+	    				<span id="info_cache" class="form_config" onclick="saveConfig()">Aucun pointage en cache</span><br/> 
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td align="right">
+	    				<span class="form_config_save trConfigSendCache" onclick="showView_index(); sendCache();">> Envoyer tous les pointages</span><br/> 
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td align="right">
+	    				<span class="form_config_save trConfigSendCache" onclick="clearCache();">> Vider le cache</span><br/> 
+	    			</td>
+	    		</tr>
+	    	</table></center>
+	    </div>
+	</body>
+</html>
