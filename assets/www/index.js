@@ -42,9 +42,15 @@ function initVarConnection(){
 	alert("initVarConnection debut");
 	
 	if (typeof states != "undefined") {
-	alert("la variable existe")
+	alert("states : la variable existe")
 	} else {
-	alert("la variable n'existe pas")
+	alert("states : la variable n'existe pas")
+	}
+	
+	if (typeof Connection != "undefined") {
+	alert("Connection : la variable existe")
+	} else {
+	alert("Connection : la variable n'existe pas")
 	}
 	
 	states[Connection.UNKNOWN]  = 'Unknown connection';
