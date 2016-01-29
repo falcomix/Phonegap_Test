@@ -53,6 +53,14 @@ function initVarConnection(){
 	alert("Connection : la variable n'existe pas")
 	}
 	
+	var networkState = navigator.connection.type;
+	
+	if (typeof networkState != "undefined") {
+	alert("networkState : la variable existe")
+	} else {
+	alert("networkState : la variable n'existe pas")
+	}
+	
 	states[Connection.UNKNOWN]  = 'Unknown connection';
 	alert("initVarConnection 1");
 	states[Connection.ETHERNET] = 'Ethernet connection';
