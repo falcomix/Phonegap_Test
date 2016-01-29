@@ -40,6 +40,13 @@ function clearCache(){
 // Initialise la structure de connexion pour une future détection
 function initVarConnection(){
 	alert("initVarConnection debut");
+	
+	if (typeof states != "undefined") {
+	alert("la variable existe")
+	} else {
+	alert("la variable n'existe pas")
+	}
+	
 	states[Connection.UNKNOWN]  = 'Unknown connection';
 	alert("initVarConnection 1");
 	states[Connection.ETHERNET] = 'Ethernet connection';
