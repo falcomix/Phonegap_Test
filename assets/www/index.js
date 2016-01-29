@@ -1,8 +1,6 @@
 /****************************************************************************************************/
 /*                          			GLOBAL / CONSTANTES	                 		*/
 /****************************************************************************************************/
-<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-
 var states 					= {};
 var dataConfig 				= new DataConfig();
 var orientation 			= "";
